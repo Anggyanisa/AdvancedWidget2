@@ -4,10 +4,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
+    public class MainActivity extends AppCompatActivity {
+        @BindView(R.id.editTextNama)
+        EditText etNama;
+        @BindView(R.id.textViewHasil)
+        TextView tvHasil;
+        @BindColor(R.color.colorAccent)
+        int colorAccent;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+
+            ButterKnife.bind(this);
+
+            tvHasil.setTextColor(colorAccent);
+        }
+
+        @OnClick(R.id.buttonProses)
+        public void doProcess() {
+            tvHasil.setText("Nama Anda: " + etNama.getText());
+        }
     }
-}
